@@ -1,1 +1,37 @@
-<p>form-ventas works!</p>
+<!-- Modal -->
+<div class="modal fade" id="ventasForm" tabindex="-1" aria-labelledby="ventasFormLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ventasFormLabel">{{ title }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="frm" id="frm" class="col-12" [formGroup]="frm" (validSubmit)="guardarVenta()">
+          <div class="col-12 mt-2 form-group">
+            <label for="asesor" class="form-label">Asesor</label>
+              <select id="asesor" class="form-select form-select-sm" placeholder="Seleccione un nivel de asesor"
+                formControlName="id_asesor">
+                <option selected value="null" >Seleccione un asesor</option>
+                <option *ngFor="let asesor of listadoAsesores" value="{{ asesor.id }}">{{ asesor.Nombre_asesor  }}</option>
+              </select>
+            <bfv-messages></bfv-messages>
+          </div>
+          <div class="col-12 mt-2 form-group">
+            <label for="venta" class="form-label">Total venta</label>
+              <input id="venta" class="form-control form-control-sm" type="text" maxlength="150" formControlName="total_venta"
+              pInputText placeholder="Total venta" />
+            <bfv-messages></bfv-messages>
+          </div>
+          <div class="col-12 mt-3 d-flex justify-content-end form-group">
+            <button type="button" id="closeModalButton" class="btn btn-sm ms-1 btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-sm ms-1 btn-dark">Guardar</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>

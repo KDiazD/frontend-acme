@@ -25,7 +25,15 @@ export class AsesoresService {
         return this._httpClient.put<any>(`${this.API_URL}/asesorescomerciales/editar_asesores/${id}`, data);
     }
 
+    eliminarAsesor(id: number | null, data = {}): Observable<any>{
+        return this._httpClient.delete<any>(`${this.API_URL}/asesorescomerciales/eliminar_asesores/${id}`, data);
+    }
+
     crearAsesor(data = {}): Observable<any>{
         return this._httpClient.post<any>(`${this.API_URL}/asesorescomerciales/agregar_asesores/`, data);
+    }
+
+     listaNiveles(): Observable<any>{
+        return this._httpClient.get<any>(`${this.API_URL}/asesorescomerciales/obtener_nivel_experiencia/`);
     }
 }

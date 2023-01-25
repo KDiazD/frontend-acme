@@ -25,6 +25,7 @@ export class IndexAsesoresComponent implements OnInit {
   }
 
   async cargarAsesores(): Promise<void>{
+    this.listadoAsesores = []
     this.listadoAsesores = await lastValueFrom(this._asesoresService.listarAsesores())
   }
 
@@ -33,10 +34,20 @@ export class IndexAsesoresComponent implements OnInit {
     this.cd.detectChanges()
   }
 
+  async eliminarAsesores(id: number): Promise<void>{
+    const RESPONSE = await lastValueFrom(this._asesoresService.eliminarAsesor(id))
+    let mensaje = {
+      mensaje: RESPONSE.message,
+      tipo: 'success'
+    }
+    this.obtenerMensaje(mensaje)
+  }
+
   obtenerMensaje(mensaje: any){
     this.mensaje = mensaje.mensaje
     this.tipoMensaje = mensaje.tipo
     this.mostrarAlerta =  true
+    this.cargarAsesores()
     setTimeout(() => {
       this.mostrarAlerta = false
     }, 3000);

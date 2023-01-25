@@ -1,32 +1,32 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AsesoresService } from '@app/pages/asesores/asesores.service';
 import { lastValueFrom } from 'rxjs';
-import { ComisionesService } from '../comisiones.service';
+
 
 @Component({
-  selector: 'app-index-comisiones',
-  templateUrl: './index-comisiones.component.html',
-  styleUrls: ['./index-comisiones.component.scss']
+  selector: 'app-index-inicio',
+  templateUrl: './index-inicio.component.html',
+  styleUrls: ['./index-inicio.component.scss']
 })
-export class IndexComisionesComponent implements OnInit {
+export class IndexInicioComponent implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
-    private _comisionesService: ComisionesService
+    private _asesoresService: AsesoresService
   ) { }
 
   idAsesor: number | null = null
   mensaje: string = ''
   tipoMensaje: string = ''
-  listadoComisiones: any = []
+  listadoAsesores: any = []
   mostrarAlerta: boolean = false
-  cols: Array<string> = ['Nombre asesor', 'Comisión', 'Fecha']
+  cols: Array<string> = ['Nombre asesor', 'Nivel de Experiencia']
 
   async ngOnInit(): Promise<void> {
-    await this.cargarComisiones()
+    await this.cargarAsesores()
   }
 
-  async cargarComisiones(): Promise<void>{
-    this.listadoComisiones = await lastValueFrom(this._comisionesService.listarComisiones())
-    console.log(this.listadoComisiones)
+  async cargarAsesores(): Promise<void>{
+    this.listadoAsesores = await lastValueFrom(this._asesoresService.listarAsesores())
   }
 
   cargarAsesor(id: number | null){
@@ -35,7 +35,6 @@ export class IndexComisionesComponent implements OnInit {
   }
 
   obtenerMensaje(mensaje: any){
-    console.log(mensaje)
     this.mensaje = mensaje.mensaje
     this.tipoMensaje = mensaje.tipo
     this.mostrarAlerta =  true

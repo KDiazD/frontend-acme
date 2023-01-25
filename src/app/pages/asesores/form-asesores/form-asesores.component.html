@@ -19,12 +19,12 @@
               <select id="nivel" class="form-select form-select-sm" placeholder="Seleccione un nivel de asesor"
                 formControlName="nivel_asesor">
                 <option selected value="null" >Seleccione un nivel de experiencia</option>
-                <option *ngFor="let nivel of listaNiveles" value="{{ nivel }}">{{ nivel }}</option>
+                <option *ngFor="let nivel of listaNiveles" value="{{ nivel.id }}">{{ nivel.nombre  }}</option>
               </select>
             <bfv-messages></bfv-messages>
           </div>
           <div class="col-12 mt-3 d-flex justify-content-end form-group">
-            <button type="button" class="btn btn-sm ms-1 btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" id="closeModalButton" class="btn btn-sm ms-1 btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-sm ms-1 btn-dark">Guardar</button>
           </div>
         </form>

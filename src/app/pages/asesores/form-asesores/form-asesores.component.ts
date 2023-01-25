@@ -13,12 +13,7 @@ export class FormAsesoresComponent implements OnChanges {
   @Input() idAsesor: number | null = null
   @Output() mostrarAlerta = new EventEmitter<any>()
 
-  listaNiveles = [
-    'Junior',
-    'Senior',
-    'Máster',
-  ]
-
+  listaNiveles: any = []
   title: string
   frm!: FormGroup
 
@@ -30,6 +25,7 @@ export class FormAsesoresComponent implements OnChanges {
   }
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
+    this.cargarListas()
     this.cargarFormulario()
     if(this.idAsesor) this.cargarAsesor()
     if(!this.idAsesor) {
@@ -49,6 +45,10 @@ export class FormAsesoresComponent implements OnChanges {
         Validators.required
       ])),
     })
+  }
+
+  async cargarListas(){
+    this.listaNiveles = await lastValueFrom(this._asesoresService.listaNiveles())
   }
 
   async cargarAsesor(): Promise<void> {
@@ -71,8 +71,11 @@ export class FormAsesoresComponent implements OnChanges {
     }
 
     this.mostrarAlerta.emit({
-      mensaje: 'Se creeo con existo',
-      tipo: 'succes'
+      mensaje: response.message,
+      tipo: response.status
     })
+
+    const div: any =  document.getElementById("closeModalButton")
+    if(div) div.click();
   }
 }

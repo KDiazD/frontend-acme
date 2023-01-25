@@ -22,11 +22,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             .pipe(
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 map((res: any) => {
-                    console.log(res)
                     return res
                 }),
                 catchError((error: HttpErrorResponse) => {
-                     console.log(error)
                     return throwError(error);
                 })
             )

@@ -12,6 +12,10 @@ export class MenuComponent implements OnInit {
 
   itemsMenu = [
     {
+      name: "Inicio",
+      url: "/"
+    },
+    {
       name: "Asesores",
       url: "/asesores"
     },

@@ -19,6 +19,7 @@ import {
   CUSTOM_ERROR_MESSAGES
 } from "ng-bootstrap-form-validation";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndexInicioComponent } from './pages/inicio/index-inicio/index-inicio.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MenuComponent,
     FormComisionesComponent,
     IndexVentasComponent,
-    FormVentasComponent
+    FormVentasComponent,
+    IndexInicioComponent
   ],
   imports: [
     BrowserModule,

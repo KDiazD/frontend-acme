@@ -39,6 +39,7 @@
                 <li><a class="dropdown-item"
                   data-bs-toggle="modal" data-bs-target="#asesoresForm"
                   (click)="cargarAsesor(asesor.id)">Editar</a></li>
+                  <li><a  class="dropdown-item" (click)="eliminarAsesores(asesor.id)">Eliminar</a></li>
               </ul>
             </div>
           </td>
@@ -47,4 +48,4 @@
     </table>
   </div>
 </div>
-<app-form-asesores [idAsesor]="idAsesor"></app-form-asesores>
+<app-form-asesores (mostrarAlerta)="obtenerMensaje($event)" [idAsesor]="idAsesor"></app-form-asesores>
